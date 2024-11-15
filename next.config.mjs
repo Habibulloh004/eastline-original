@@ -1,5 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  reactStrictMode: true,
+  experimental: {
+    serverActions: true, // If using server actions
+  },
+  productionBrowserSourceMaps: true, // Enables source maps in production
+
   webpack(config) {
     config.resolve.fallback = {
       ...config.resolve.fallback,
@@ -7,6 +13,7 @@ const nextConfig = {
     };
     return config;
   },
+
   images: {
     remotePatterns: [
       {
@@ -23,6 +30,7 @@ const nextConfig = {
       },
     ],
   },
+
   async headers() {
     return [
       {
